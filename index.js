@@ -71,7 +71,7 @@ const items = [
     },
     {
         type: 'fruits',
-        img: 'https://www.healthxchange.sg/sites/hexassets/Assets/food-nutrition/pineapple-health-benefits-and-ways-to-enjoy.jpg',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWH3cq8Sh3Yt5O1GISlQf9-bzQDB_sBYBKpH1iW-fZtdVnmbLyP4eNEZEMu58OP337POo&usqp=CAU',
         titlu: 'pineapple',
         price: 10,
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores, et ipsa maiores praesentium repudiandae.'
