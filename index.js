@@ -71,7 +71,7 @@ const items = [
     },
     {
         type: 'fruits',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWH3cq8Sh3Yt5O1GISlQf9-bzQDB_sBYBKpH1iW-fZtdVnmbLyP4eNEZEMu58OP337POo&usqp=CAU',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzWwalE9LLS7-Woe5Hz22b5VRx02taRqofsvPDgbXjWZ46kkWd2BiwCPAzhb10vV5hM4M&usqp=CAU',
         titlu: 'pineapple',
         price: 10,
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores, et ipsa maiores praesentium repudiandae.'
@@ -105,14 +105,10 @@ const items = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores, et ipsa maiores praesentium repudiandae.'
     }
   ]
-
-let productList = document.getElementById('listItem')
-let filtreTip = document.getElementById('butoanefiltre')
-
-const Cart = items.map((item) => {
-    let itemDiV = document.createElement('div')
-        
-    itemDiV.innerHTML = `
+/* const displayItems = () => {
+    return items.map((item) => {
+       let itemDiV = document.createElement('div')  
+       itemDiV.innerHTML = `
         <div class="container">
             <div class="imagineWrapper">
                 <img src=${item.img} class="imagine" alt="Item image">
@@ -123,28 +119,102 @@ const Cart = items.map((item) => {
                 <div class="price"> ${item.price} MDL</div>
             </div>
             <p class="info"> ${item.description}</p>
-        </div>`
-    productList.appendChild(itemDiV)
-})
+        </div>`  
+       productList.appendChild(itemDiV)  
+    })
+}
+ */
 
-
-
-const filters = [
-    'vegetable',
-    'fruits',
-    'meet',
-    'all'
-]
-
-const filterBar = () => {
+/* const filterBar = () => {
+    const filters = ['vegetable', 'fruits', 'meet','all']
     
     return filters.map((element, index) =>
         `<div class="filterItem">
-            <div class="activeItemFilter" id="div${index + 1}"> ${element} </div>
+            <div class="activeItemFilter" onclick="filterItems id="div${index + 1}"> ${element} </div>
         </div>`
     
     ).join('')
     
 }
-filtreTip.innerHTML= filterBar()
+filtreTip.innerHTML= filterBar() */
+
+
+/* const filterItemBar = () => {
+    const tipuriFiltre = ['all', ...new Set(items.map(item => item.type))]
+    filtreTip.innerHTML = ''
+    
+    return tipuriFiltre.map ((type) => {
+        filtreTip.innerHTML += `
+        <div class="filterItem">
+            <div class="activeItemFilter">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+        </div>`
+    })
+
+}
+filterItemBar() */
+
+let productList = document.getElementById('listItem')
+let filtreTip = document.getElementById('butoanefiltre')
+let currentFilter = 'all';
+let filteredItems = [];
+
+
+const displayItems = (itemsToDisplay) => {
+    productList.innerHTML = ''
+    
+    itemsToDisplay.forEach(item => {
+        let itemDiV = document.createElement('div') 
+        itemDiV.className = 'item'
+        itemDiV.innerHTML = `
+        <div class="container">
+            <div class="imagineWrapper">
+                <img src=${item.img} class="imagine" alt="Item image">
+            </div>
+                    
+            <div class="description">
+                <div class="titlu"> ${item.titlu}</div>
+                <div class="price"> ${item.price} MDL</div>
+            </div>
+            <p class="info"> ${item.description}</p>
+        </div>`
+        
+        productList.appendChild(itemDiV)   
+    })
+        
+}
+
+
+const filterItems = (filter) => {
+    currentFilter = filter;
+    if(currentFilter === 'all') {
+        filteredItems = items;
+    } else {
+        filteredItems = items.filter(item => item.type === currentFilter)
+    }
+
+   displayfileteredItems() 
+}
+
+
+
+const sortItemByType = () => {
+    filteredItems.sort((a, b) => a.type.localeCompare(b.type))
+
+    displayfileteredItems()      
+}
+
+
+const displayfileteredItems = () => {
+    if(currentFilter === 'fruits') {
+        displayItems(filteredItems.filter(item => item.type === 'fruits'));
+    } else if (currentFilter === 'vegetable') {
+        displayItems(filteredItems.filter(item => item.type === 'vegetable'));
+    } else if (currentFilter === 'meet') {
+        displayItems(filteredItems.filter(item => item.type === 'meet')) ; 
+    } else {
+        displayItems(filteredItems)
+    }
+}
+console.log(displayfileteredItems);
+displayItems(items)
 

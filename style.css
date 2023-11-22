@@ -65,15 +65,16 @@ body{
    font-weight: 700;
    padding: 8px 16px;
    cursor: pointer;
-   text-transform: uppercase;
+   
 }
 
 .activeItemFilter{
     border: 1px solid rgb(75, 120, 7);
     border-radius: 4px;
-    font-size: 3rem; 
+    font-size: 2rem; 
     font-weight: 700;
     padding: 8px 16px;
     cursor: pointer;
+    text-transform: uppercase;
     
 }

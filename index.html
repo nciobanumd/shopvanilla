@@ -11,7 +11,16 @@
 </head>
 <body>
 
-    <div class="filterWrapper" id="butoanefiltre"></div>
+    <div class="filterWrapper" id="butoanefiltre">
+        <div class="filterItem">
+            <button class="activeItemFilter" onclick="filterItems('all')">All</button>
+            <button class="activeItemFilter" onclick="filterItems('fruits')">fruits</button>
+            <button class="activeItemFilter" onclick="filterItems('vegetable')">vegetable</button>
+            <button class="activeItemFilter" onclick="filterItems('meet')">meet</button>
+        </div>
+        
+    </div>
+        
     <div class="listWrapper" id="listItem"></div>
       
 <script src="./index.js"></script>    
